@@ -1,0 +1,34 @@
+def display_array(arr):
+    print("Current array:", arr)
+
+def insert_at_location(arr, num, loc):
+    if loc < 0 or loc > len(arr):
+        print("Invalid location. No insertion made.")
+        return arr
+    return arr[:loc] + [num] + arr[loc:]
+
+def delete_at_location(arr, loc):
+    if loc < 0 or loc >= len(arr):
+        print("Invalid location. No deletion made.")
+        return arr
+    return arr[:loc] + arr[loc+1:]
+
+def main():
+    initial_numbers = input("Enter initial numbers separated by spaces: ")
+    arr = list(map(int, initial_numbers.split()))
+    
+    display_array(arr)
+    
+    num_to_insert = int(input("Enter the number to insert: "))
+    insert_location = int(input("Enter the location to insert the number at (0-based index): "))
+    arr = insert_at_location(arr, num_to_insert, insert_location)
+    
+    display_array(arr)
+    
+    delete_location = int(input("Enter the location to delete the number from (0-based index): "))
+    arr = delete_at_location(arr, delete_location)
+    
+    display_array(arr)
+
+if __name__ == "__main__":
+    main()
